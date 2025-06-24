@@ -14,7 +14,6 @@ local function startRaid(locationKey, source)
     end
     
     isRaidActive = true
-    print(('[dan-banditraid] An attack has begun at %s by %s.'):format(locationConfig.name, source))
     TriggerClientEvent('dan-banditraid:client:start', -1, locationConfig)
     TriggerClientEvent('ox_lib:notify', -1, {description = ('Bandits have been seen in %s.'):format(locationConfig.name), type = 'warning', duration = 10000 })
 end
@@ -41,7 +40,6 @@ RegisterCommand('stopraid', function(source)
 
         isRaidActive = false
         TriggerClientEvent('dan-banditraid:client:cleanup', -1)
-        print('[dan-banditraid] Serangan dihentikan manual.')
         TriggerClientEvent('ox_lib:notify', -1, { title = 'Info', description = 'The bandit threat has been neutralized.', type = 'success' })
     else
         TriggerClientEvent('ox_lib:notify', source, { title = 'Error', description = 'Access Denied', type = 'error' })
@@ -51,7 +49,6 @@ end, false)
 RegisterNetEvent('dan-banditraid:server:raidFinished', function()
     if isRaidActive then
         isRaidActive = false
-        print('[dan-banditraid] Serangan telah selesai.')
         TriggerClientEvent('ox_lib:notify', -1, { title = 'Info', description = 'All bandits have been defeated.', type = 'success' })
     end
 end)
