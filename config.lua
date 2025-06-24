@@ -1,23 +1,21 @@
 Config = {}
 
 Config.RaidLocations = {
-    ["cotorra"] = {
+    ["bw"] = {
         name = "Cotorra Springs",
-        coords = vector3(-836.90, -408.27, 42.01),
-        radius = 10.0,
+        coords = vector3(-801.56, -1306.50, 43.48),
+        radius = 100.0,
         banditModels = {
-        'g_m_m_uniduster_01',
-        ''
+        'g_m_m_uniduster_01'
 },
-
         waves = {
             {
-                count = 4,
+                count = 10,
                 weapon = "WEAPON_REPEATER_WINCHESTER"
             },
             {
-                count = 6,
-                weapon = "WEAPON_REPEATER_WINCHESTER"
+                count = 60,
+                weapon = "WEAPON_REPEATER_CARBINE"
             }
         }
     },

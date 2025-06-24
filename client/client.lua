@@ -57,7 +57,7 @@ function startClientRaid(raidConfig)
     cleanupBandits()
     isRaidAreaActive = true
     
-    exports.ox_lib:notify({description = 'The bandits are coming to attack!', type = 'error', duration = 7000 })
+    exports.ox_lib:notify({ description = 'Carefull Bandit Attack', type = 'error', duration = 7000 })
 
     CreateThread(function()
         for _, wave in ipairs(raidConfig.waves) do
@@ -75,11 +75,13 @@ function startClientRaid(raidConfig)
                 
                 if spawnCoords then
                     local bandit = CreatePed(banditModel, spawnCoords.x, spawnCoords.y, spawnCoords.z, 0.0, true, true)
-                    Wait(100)l
+                    Wait(100) 
+
                     if DoesEntityExist(bandit) then
                         SetEntityAsMissionEntity(bandit, true, true)
                         SetPedRandomComponentVariation(bandit, true)
                         PlaceObjectOnGroundProperly(bandit)
+                        
                         table.insert(spawnedBandits, bandit)
                         GiveWeaponToPed(bandit, GetHashKey(wave.weapon), 1000, true, true)
                         TaskCombatPed(bandit, PlayerPedId(), 0, 16)
